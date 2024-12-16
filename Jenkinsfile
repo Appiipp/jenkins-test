@@ -18,9 +18,11 @@ pipeline {
             }
         }    
         stage('Deploy'){
-            sh './jenkins/scripts/deliver.sh'
-            input message : 'Jika sudah berhasil menjalankan klik "Proceed" untuk mengakhiri'
-            steps './jenkins/script/kill.sh'
+            steps{
+                sh './jenkins/scripts/deliver.sh'
+                input message : 'Jika sudah berhasil menjalankan klik "Proceed" untuk mengakhiri'
+                sh './jenkins/script/kill.sh'
+            }
         }
     }
 }
