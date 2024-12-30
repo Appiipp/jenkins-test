@@ -20,7 +20,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
-                sh 'npm start & sleep 300'
                 input message: 'Finished using the website? (Click "Proceed" to continue)'
                 sh './jenkins/scripts/kill.sh'
             }
